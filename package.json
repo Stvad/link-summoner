@@ -1,6 +1,6 @@
 {
   "name": "link-summoner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "source": "src/index.ts",
   "main": "dist/main.js",
   "browser": "dist/browser.js",

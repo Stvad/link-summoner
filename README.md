@@ -6,10 +6,10 @@ A script that you can embed in your website  to easily enable live link previews
 
 ### Usage
 
-Add the following tag to your page
+Add the following tag to your page (update the version number if necessary):
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/link-summoner@1.0.1/dist/browser.min.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/link-summoner@1.0.2/dist/browser.min.js" type="module"></script>
 ```
 
 ### Supported websites

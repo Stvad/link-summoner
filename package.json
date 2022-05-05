@@ -1,6 +1,6 @@
 {
   "name": "link-summoner",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "source": "src/index.ts",
   "main": "dist/main.js",
   "browser": "dist/browser.js",
@@ -25,5 +25,13 @@
   },
   "dependencies": {
     "tippy.js": "^6.3.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Stvad/link-summoner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Stvad/link-summoner/issues"
+  },
+  "homepage": "https://github.com/Stvad/link-summoner"
 }

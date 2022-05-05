@@ -1,7 +1,7 @@
 import {IframeRenderer} from './iframe-renderer'
 import {WikipediaRenderer} from './wikipedia-renderer'
 import {findAsync, someAsync} from '../async'
-// import {ManifoldRenderer} from './manifold-renderer'
+import {ManifoldRenderer} from './manifold-renderer'
 
 export interface LinkRenderer {
 	canRender(url: URL): Promise<boolean>
@@ -13,7 +13,7 @@ export interface LinkRenderer {
  * Order is priority
  */
 const allRenderers: LinkRenderer[] = [
-	// new ManifoldRenderer(),
+	new ManifoldRenderer(),
 	new WikipediaRenderer(),
 	new IframeRenderer(),
 ]

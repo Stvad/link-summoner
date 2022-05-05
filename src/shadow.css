@@ -2,11 +2,17 @@
 @import 'npm:tippy.js/themes/light.css';
 
 .iframe-preview,
-.wikipedia-preview {
+.wikipedia-preview,
+.manifold-preview {
     width: 600px;
     height: 500px;
     border: none;
     padding: 0.4em 2px 2px;
+}
+
+.manifold-preview {
+    width: 560px;
+    height: 405px;
 }
 
 .tippy-content {

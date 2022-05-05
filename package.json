@@ -1,0 +1,29 @@
+{
+  "name": "ilive",
+  "version": "1.0.0",
+  "source": "src/index.ts",
+  "main": "dist/main.js",
+  "browser": "dist/browser.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@parcel/packager-ts": "2.5.0",
+    "@parcel/transformer-inline-string": "2.5.0",
+    "@parcel/transformer-typescript-types": "2.5.0",
+    "@parcel/validator-typescript": "^2.5.0",
+    "parcel": "^2.5.0",
+    "typescript": ">=3.0.0"
+  },
+  "license": "MIT",
+  "targets": {
+    "browser": {
+      "includeNodeModules": true
+    }
+  },
+  "dependencies": {
+    "tippy.js": "^6.3.7"
+  }
+}

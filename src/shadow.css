@@ -1,0 +1,18 @@
+@import 'npm:tippy.js/dist/tippy.css';
+@import 'npm:tippy.js/themes/light.css';
+
+.iframe-preview,
+.wikipedia-preview {
+    width: 600px;
+    height: 500px;
+    border: none;
+    padding: 0.4em 2px 2px;
+}
+
+.tippy-content {
+    padding: 0;
+}
+
+.text-fragment-preview {
+    padding: 1px 0.5em;
+}

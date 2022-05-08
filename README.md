@@ -14,7 +14,7 @@ Add the following tag to your page (update the version number if necessary):
 
 ### Styling
 
-Links that get live preview for them get the `link-with-preview` CSS class. You can add styling to indicate presence of the preview. For the following snippet would add `τ` after each link with preview:
+Links that can be previewed get the `link-with-preview` CSS class. You can specify styling for that class to indicate presence of the preview. For example, the following snippet would add `τ` after each link with preview:
 
 ```css
 .link-with-preview::after {

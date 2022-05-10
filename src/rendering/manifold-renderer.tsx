@@ -27,4 +27,4 @@ function rewriteToEmbed(link: string) {
     return `https://manifold.markets/embed/${match[1]}/${match[2]}`
 }
 
-const regex = /^https?:\/\/manifold\.markets\/([^\/]+)\/([^\/]+)/
+const regex = /^https?:\/\/manifold\.markets\/(?!charity\/)([^\/]+)\/([^\/]+)/

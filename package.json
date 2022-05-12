@@ -1,6 +1,6 @@
 {
   "name": "link-summoner",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "source": "src/index.ts",
   "main": "dist/main.js",
   "browser": "dist/browser.js",
@@ -20,7 +20,14 @@
   "license": "MIT",
   "targets": {
     "browser": {
+      "source": "src/browser.ts",
       "includeNodeModules": true
+    },
+    "main": {
+      "source": "src/index.ts"
+    },
+    "types": {
+      "source": "src/index.ts"
     }
   },
   "dependencies": {

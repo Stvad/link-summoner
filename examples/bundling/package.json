@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "link-summoner-bundling-example",
+  "version": "1.0.0",
+  "scripts": {
+	"build": "parcel build --no-cache",
+    "start": "parcel --no-cache"
+  },
+  "source": "index.html",
+  "license": "MIT",
+  "dependencies": {
+    "link-summoner": "^1.0.2"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  }
+}

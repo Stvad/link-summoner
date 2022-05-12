@@ -1,16 +1,11 @@
 import {LinkRenderer} from './link-renderer'
+import {createIframe} from './iframe-renderer'
 
 export class WikipediaRenderer implements LinkRenderer {
-    async canRender(url: URL): Promise<boolean> {
-        return regex.test(url.href)
-    }
+    canRender = async (url: URL) => regex.test(url.href)
 
-    async render(url: URL): Promise<HTMLElement> {
-        const result = document.createElement('iframe')
-        result.src = rewriteToMobile(url.href)
-        result.className = 'wikipedia-preview'
-        return result
-    }
+    render = async (url: URL) =>
+        createIframe(rewriteToMobile(url.href), 'wikipedia-preview')
 }
 
 /**

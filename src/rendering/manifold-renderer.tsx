@@ -1,16 +1,11 @@
 import {LinkRenderer} from './link-renderer'
+import {createIframe} from './iframe-renderer'
 
 export class ManifoldRenderer implements LinkRenderer {
-    async canRender(url: URL): Promise<boolean> {
-        return regex.test(url.href)
-    }
+    canRender = async (url: URL) => regex.test(url.href)
 
-    async render(url: URL): Promise<HTMLElement> {
-        const result = document.createElement('iframe')
-        result.src = rewriteToEmbed(url.href)
-        result.className = 'manifold-preview'
-        return result
-    }
+    render = async (url: URL) =>
+        createIframe(rewriteToEmbed(url.href), 'manifold-preview')
 }
 
 /**

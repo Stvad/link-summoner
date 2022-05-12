@@ -1,16 +1,27 @@
 import {LinkRenderer} from './link-renderer'
 
+export const iframeRenderer = (
+    regex: RegExp,
+    className?: string
+): LinkRenderer =>
+	({
+	canRender: async (url: URL) => regex.test(url.href),
+	render: async (url: URL) => createIframe(url.href, className),
+})
+
 export class IframeRenderer implements LinkRenderer {
 	canRender = async (url: URL): Promise<boolean> =>
 		whitelistDomains.some(domain => url.hostname.includes(domain)) ||
 		allowSubdomainsFrom.some(domain => url.hostname.endsWith(domain))
 
-	async render(url: URL): Promise<HTMLElement> {
-		const result = document.createElement('iframe')
-		result.src = url.href
-		result.className = 'iframe-preview'
-		return result
-	}
+	render = async (url: URL) => createIframe(url.href)
+}
+
+export function createIframe(href: string, className: string = 'iframe-preview') {
+    const result = document.createElement('iframe')
+    result.src = href
+    result.className = className
+    return result
 }
 
 // todo Make configurable

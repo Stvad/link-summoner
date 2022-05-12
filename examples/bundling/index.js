@@ -1,4 +1,9 @@
-import {initPreviews} from "link-summoner"
+import {initPreviews, defaultRenderers, iframeRenderer} from "link-summoner"
 
-void initPreviews()
+initPreviews({
+    renderers: [
+        iframeRenderer(/example\.com/),
+        ...defaultRenderers,
+    ]
+})
 console.log("links are summoned")

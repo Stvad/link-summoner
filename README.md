@@ -6,10 +6,24 @@ A script that you can embed in your website  to easily enable live link previews
 
 ### Usage
 
-Add the following tag to your page (update the version number if necessary):
+#### Script tag
+
+The simplest option is to add the following tag to your page (update the version number if necessary):
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/link-summoner@1.0.2/dist/browser.min.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/link-summoner@1.1.0/dist/browser.min.js" type="module"></script>
+```
+
+#### Using as a library (via NPM)
+
+See example usage in [examples/bundling](./examples/bundling)
+
+1. `npm install link-summoner`
+2. In the files/pages you want to have live link previews:
+```javascript
+import {initPreviews} from "link-summoner"
+
+initPreviews()
 ```
 
 ### Styling

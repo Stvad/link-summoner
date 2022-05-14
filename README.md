@@ -28,6 +28,8 @@ initPreviews()
 
 ### Customization
 
+See an extensive customization example in [Transclude Me extension](https://github.com/transclude-me/extension/blob/main/source/content/index.ts#L23) which is using this library as a foundation.
+
 #### Styling
 
 Links that can be previewed get the `link-with-preview` CSS class. You can specify styling for that class to indicate presence of the preview. For example, the following snippet would add `τ` after each link with preview:
@@ -53,6 +55,8 @@ Links that can be previewed get the `link-with-preview` CSS class. You can speci
     - `canRender(url: URL): Promise<boolean>` and 
     - `render(url: URL): Promise<HTMLElement>` methods.
   - There is also a set of pre-defined renderers you can reuse.
+- `tippyOptions` - options for the [tippy.js](https://atomiks.github.io/tippyjs/) library which is used to show popups.
+  - **Default**: [./src/tippy.ts](./src/tippy.ts)
 
 **Example: add an iframe preview for `example.com`, while keeping all the default preview options:** 
 ```javascript
@@ -71,3 +75,6 @@ initPreviews({
 
 For the list of supported websites see files in [src/rendering](./src/rendering) 
 
+### Usage in the wild:
+- [Transclude Me extension](https://github.com/transclude-me/extension/)
+- https://docs.manifold.markets

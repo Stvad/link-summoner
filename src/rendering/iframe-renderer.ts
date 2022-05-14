@@ -1,27 +1,30 @@
 import {LinkRenderer} from './link-renderer'
 
 export const iframeRenderer = (
-    regex: RegExp,
-    className?: string
+	regex: RegExp,
+	className?: string
 ): LinkRenderer =>
 	({
-	canRender: async (url: URL) => regex.test(url.href),
-	render: async (url: URL) => createIframe(url.href, className),
-})
+		canRender: async (url: URL) => regex.test(url.href),
+		render: async (url: URL) => createIframe(url.href, className),
+	})
 
 export class IframeRenderer implements LinkRenderer {
+	constructor(readonly whitelistDomains: string[] = defaultWhitelistDomains,
+				readonly allowSubdomainsFrom: string[] = defaultAllowSubdomainsFrom) {}
+
 	canRender = async (url: URL): Promise<boolean> =>
-		whitelistDomains.some(domain => url.hostname.includes(domain)) ||
-		allowSubdomainsFrom.some(domain => url.hostname.endsWith(domain))
+		this.whitelistDomains.some(domain => url.hostname.includes(domain)) ||
+		this.allowSubdomainsFrom.some(domain => url.hostname.endsWith(domain))
 
 	render = async (url: URL) => createIframe(url.href)
 }
 
 export function createIframe(href: string, className: string = 'iframe-preview') {
-    const result = document.createElement('iframe')
-    result.src = href
-    result.className = className
-    return result
+	const result = document.createElement('iframe')
+	result.src = href
+	result.className = className
+	return result
 }
 
 // todo Make configurable
@@ -895,12 +898,12 @@ const allowSubdomainsFromGwern = [
 	'.blogspot.com',
 ]
 
-export const allowSubdomainsFrom = [
+export const defaultAllowSubdomainsFrom = [
 	'.wikidata.org',
 	'.roam.garden',
 	...allowSubdomainsFromGwern,
 ]
 
-export const whitelistDomains = [
+export const defaultWhitelistDomains = [
 	...goodGwernDomains,
 ]

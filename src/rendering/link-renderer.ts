@@ -9,12 +9,15 @@ export interface LinkRenderer {
 	render(url: URL): Promise<HTMLElement>
 }
 
+export const siteSpecificRenderers: LinkRenderer[] = [
+	new ManifoldRenderer(),
+	new WikipediaRenderer()
+]
 /**
  * Order is priority
  */
 export const defaultRenderers: LinkRenderer[] = [
-	new ManifoldRenderer(),
-	new WikipediaRenderer(),
+	...siteSpecificRenderers,
 	new IframeRenderer(),
 ]
 

@@ -1,10 +1,14 @@
-import tippy from 'tippy.js'
+import tippy, {Props} from 'tippy.js'
 
 import shadowCss from 'bundle-text:./shadow.css'
 
-const shadowRoot = initShadowRoot()
+export const shadowRoot = initShadowRoot()
 
-export function showTippy(link: HTMLAnchorElement | HTMLAreaElement, previewElement: HTMLElement) {
+export function showTippy(
+    link: HTMLAnchorElement | HTMLAreaElement,
+    previewElement: HTMLElement,
+    options: Partial<Props> = {}
+) {
     tippy(link, {
         content: previewElement,
         placement: 'bottom',
@@ -16,6 +20,7 @@ export function showTippy(link: HTMLAnchorElement | HTMLAreaElement, previewElem
         theme: 'light',
         maxWidth: '55em',
         delay: [0, 400],
+        ...options
     })
 }
 

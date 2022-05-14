@@ -1,3 +1,4 @@
 export * from './rendering/link-renderer'
 export * from './rendering/iframe-renderer'
-export {initPreviews} from './init';
+export {shadowRoot} from './tippy'
+export {initPreviews} from './init'

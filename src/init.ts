@@ -1,17 +1,20 @@
 import {defaultRenderers, LinkRenderer, render} from './rendering/link-renderer'
 import {showTippy} from './tippy'
+import {Props} from 'tippy.js'
 
 const linkSelector = 'a, area'
 
 interface InitPreviewsOnPageParams {
     renderers?: LinkRenderer[]
     linkPreviewClass?: string
+    tippyOptions?: Partial<Props>
 }
 
 export async function initPreviews(
     {
         renderers = defaultRenderers,
         linkPreviewClass = 'link-with-preview',
+        tippyOptions = {},
     }: InitPreviewsOnPageParams = {},
 ) {
     async function initPreview(link: HTMLAnchorElement | HTMLAreaElement) {
@@ -19,7 +22,7 @@ export async function initPreviews(
         if (!previewElement) return
 
         link.classList.add(linkPreviewClass)
-        showTippy(link, previewElement)
+        showTippy(link, previewElement, tippyOptions)
     }
 
     async function initPreviewsForExistingLinks() {

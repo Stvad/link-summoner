@@ -1,5 +1,7 @@
 # Link Summoner
 
+![npm](https://img.shields.io/npm/v/link-summoner?style=flat-square)
+
 A script that you can embed in your website  to easily enable live link previews for a whitelisted set of websites.
 
 ![](./media/manifold-link-summoner.gif)
@@ -11,7 +13,7 @@ A script that you can embed in your website  to easily enable live link previews
 The simplest option is to add the following tag to your page (update the version number if necessary):
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/link-summoner@1.1.1/dist/browser.min.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/link-summoner@1.2.0/dist/browser.min.js" type="module"></script>
 ```
 
 #### Using as a library (via NPM)

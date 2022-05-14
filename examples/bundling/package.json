@@ -9,7 +9,7 @@
   "source": "index.html",
   "license": "MIT",
   "dependencies": {
-    "link-summoner": "^1.0.2"
+    "link-summoner": "^1.2.0"
   },
   "devDependencies": {
     "parcel": "^2.5.0"

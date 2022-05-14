@@ -1,6 +1,6 @@
 import {IframeRenderer} from './iframe-renderer'
 import {WikipediaRenderer} from './wikipedia-renderer'
-import {findAsync, someAsync} from '../async'
+import {findAsync, someAsync} from '../common/async'
 import {ManifoldRenderer} from './manifold-renderer'
 
 export interface LinkRenderer {

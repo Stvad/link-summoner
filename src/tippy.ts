@@ -1,8 +1,9 @@
 import tippy, {Props} from 'tippy.js'
 
 import shadowCss from 'bundle-text:./shadow.css'
+import {lazy} from './common/lazy'
 
-export const shadowRoot = initShadowRoot()
+export const getShadowRoot = lazy(initShadowRoot)
 
 export function showTippy(
     link: HTMLAnchorElement | HTMLAreaElement,
@@ -14,7 +15,7 @@ export function showTippy(
         placement: 'bottom',
         arrow: true,
         // in shadow dom to avoid affecting the page styles
-        appendTo: () => shadowRoot as unknown as Element,
+        appendTo: () => getShadowRoot() as unknown as Element,
         animation: 'fade',
         interactive: true,
         theme: 'light',

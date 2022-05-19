@@ -13,7 +13,7 @@ A script that you can embed in your website  to easily enable live link previews
 The simplest option is to add the following tag to your page (update the version number if necessary):
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/link-summoner@1.2.0/dist/browser.min.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/link-summoner@1.3.1/dist/browser.js" type="module"></script>
 ```
 
 #### Using as a library (via NPM)

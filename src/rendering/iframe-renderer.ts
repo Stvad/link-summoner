@@ -906,4 +906,5 @@ export const defaultAllowSubdomainsFrom = [
 
 export const defaultWhitelistDomains = [
 	...goodGwernDomains,
+	"waitbutwhy.com",
 ]

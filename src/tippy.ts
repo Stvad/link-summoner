@@ -5,25 +5,23 @@ import {lazy} from './common/lazy'
 
 export const getShadowRoot = lazy(initShadowRoot)
 
-export function showTippy(
+export const createTippy = (
     link: HTMLAnchorElement | HTMLAreaElement,
     previewElement: HTMLElement,
-    options: Partial<Props> = {}
-) {
-    tippy(link, {
-        content: previewElement,
-        placement: 'bottom',
-        arrow: true,
-        // in shadow dom to avoid affecting the page styles
-        appendTo: () => getShadowRoot() as unknown as Element,
-        animation: 'fade',
-        interactive: true,
-        theme: 'light',
-        maxWidth: '55em',
-        delay: [0, 400],
-        ...options
-    })
-}
+    options: Partial<Props> = {},
+) => tippy(link, {
+    content: previewElement,
+    placement: 'bottom',
+    arrow: true,
+    // in shadow dom to avoid affecting the page styles
+    appendTo: () => getShadowRoot() as unknown as Element,
+    animation: 'fade',
+    interactive: true,
+    theme: 'light',
+    maxWidth: '55em',
+    delay: [0, 400],
+    ...options,
+})
 
 
 function initShadowRoot() {

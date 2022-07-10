@@ -32,7 +32,7 @@ export const render = async (link: URL, renderers: LinkRenderer[] = defaultRende
 	return renderContainer
 }
 
-const canRender = async (link: URL, renderers: LinkRenderer[] = defaultRenderers): Promise<boolean> =>
+export const canRender = async (link: URL, renderers: LinkRenderer[] = defaultRenderers): Promise<boolean> =>
 	someAsync(renderers, renderer => renderer.canRender(link))
 
 const renderComponent = async (renderers: LinkRenderer[], link: URL) => {

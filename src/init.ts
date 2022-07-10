@@ -1,6 +1,6 @@
 import {defaultRenderers, LinkRenderer, render} from './rendering/link-renderer'
-import {showTippy} from './tippy'
-import {Props} from 'tippy.js'
+import {createTippy} from './tippy'
+import {Instance, Props} from 'tippy.js'
 
 const linkSelector = 'a, area'
 
@@ -17,12 +17,16 @@ export async function initPreviews(
         tippyOptions = {},
     }: InitPreviewsOnPageParams = {},
 ) {
-    async function initPreview(link: HTMLAnchorElement | HTMLAreaElement) {
-        const previewElement = await render(new URL(link.href), renderers)
-        if (!previewElement) return
+    async function initPreview(link: HTMLAnchorElement | HTMLAreaElement): Promise<Instance | undefined> {
+        try {
+            const previewElement = await render(new URL(link.href), renderers)
+            if (!previewElement) return
 
-        link.classList.add(linkPreviewClass)
-        showTippy(link, previewElement, tippyOptions)
+            link.classList.add(linkPreviewClass)
+            return createTippy(link, previewElement, tippyOptions)
+        } catch (e) {
+            console.error('Failed to initialize the preview for', link, e)
+        }
     }
 
     async function initPreviewsForExistingLinks() {

@@ -8,6 +8,7 @@ interface InitPreviewsOnPageParams {
     renderers?: LinkRenderer[]
     linkPreviewClass?: string
     tippyOptions?: Partial<Props>
+    postInit?: (link: HTMLAnchorElement | HTMLAreaElement) => void,
 }
 
 export async function initPreviews(
@@ -15,6 +16,7 @@ export async function initPreviews(
         renderers = defaultRenderers,
         linkPreviewClass = 'link-with-preview',
         tippyOptions = {},
+        postInit = () => {},
     }: InitPreviewsOnPageParams = {},
 ) {
     async function initPreview(link: HTMLAnchorElement | HTMLAreaElement): Promise<Instance | undefined> {
@@ -23,7 +25,10 @@ export async function initPreviews(
             if (!previewElement) return
 
             link.classList.add(linkPreviewClass)
-            return createTippy(link, previewElement, tippyOptions)
+            const tippyInstance = createTippy(link, previewElement, tippyOptions)
+            postInit(link)
+
+            return tippyInstance
         } catch (e) {
             console.error('Failed to initialize the preview for', link, e)
         }

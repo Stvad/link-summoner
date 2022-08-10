@@ -1,6 +1,8 @@
 import {defaultRenderers, LinkRenderer, render} from './rendering/link-renderer'
 import {createTippy} from './tippy'
 import {Instance, Props} from 'tippy.js'
+import {createPreviewWrapper} from './preview-wrapper'
+import {LinkLike} from './types'
 
 const linkSelector = 'a, area'
 
@@ -8,7 +10,8 @@ interface InitPreviewsOnPageParams {
     renderers?: LinkRenderer[]
     linkPreviewClass?: string
     tippyOptions?: Partial<Props>
-    postInit?: (link: HTMLAnchorElement | HTMLAreaElement) => void,
+    postInit?: (link: LinkLike) => void,
+    actionProviders?: ((link: LinkLike) => HTMLElement)[]
 }
 
 export async function initPreviews(
@@ -17,15 +20,17 @@ export async function initPreviews(
         linkPreviewClass = 'link-with-preview',
         tippyOptions = {},
         postInit = () => {},
+        actionProviders = [],
     }: InitPreviewsOnPageParams = {},
 ) {
-    async function initPreview(link: HTMLAnchorElement | HTMLAreaElement): Promise<Instance | undefined> {
+    async function initPreview(link: LinkLike): Promise<Instance | undefined> {
         try {
             const previewElement = await render(new URL(link.href), renderers)
             if (!previewElement) return
 
             link.classList.add(linkPreviewClass)
-            const tippyInstance = createTippy(link, previewElement, tippyOptions)
+            const tippyInstance =
+                createTippy(link, createPreviewWrapper(link, previewElement, actionProviders), tippyOptions)
             postInit(link)
 
             return tippyInstance
@@ -53,7 +58,7 @@ export async function initPreviews(
         if (isLink) {
             void initPreview(node)
         } else if (node instanceof HTMLElement) {
-            const links = node.querySelectorAll(linkSelector) as NodeListOf<HTMLAnchorElement | HTMLAreaElement>
+            const links = node.querySelectorAll(linkSelector) as NodeListOf<LinkLike>
             links.forEach(initPreview)
         }
     }

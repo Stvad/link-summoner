@@ -52,7 +52,7 @@ Links that can be previewed get the `link-with-preview` CSS class. You can speci
 - `linkPreviewClass: string` — CSS class that will be added to links that have the preview.
   - **Default**: `link-with-preview` 
 - `renderers: LinkRenderer[]` - a list of renderers for live previews. 
-  - **Default**: [`defaultRenderers`](./src/rendering/link-renderer.tsx#15) 
+  - **Default**: [`defaultRenderers`](./src/rendering/link-renderer.ts#15) 
   - Each renderer must define 
     - `canRender(url: URL): Promise<boolean>` and 
     - `render(url: URL): Promise<HTMLElement>` methods.
@@ -71,6 +71,7 @@ initPreviews({
   ]
 })
 ```
+
 
 
 ### Supported websites
